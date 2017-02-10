@@ -28,7 +28,7 @@ namespace algernon {
 
       Keyboardio.use (&::MouseKeys, NULL);
 
-      ::MouseKeys.speedDelay = 30;
+      ::MouseKeys.speedDelay = 10;
       ::MouseKeys.speed = 1;
       ::MouseKeys.accelSpeed = 0;
     }
