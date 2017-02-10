@@ -21,9 +21,10 @@
 // LAYERS
 
 enum {
-  _QWERTY,
-  _NNS,
-  _EMPTY,
+  _QTY,
+  _SYM,
+  _GAM,
+  _ETY,
 
   LAYER_MAX
 };

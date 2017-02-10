@@ -42,15 +42,15 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    * |  Q  |-----|  S  |-----|  F  |  G  |                           |  H  |  J  |-----|  L  |-----| . > |
    * `-----|  Z  |-----|  C  |-----+-----'                           `-----+-----|  N  |-----| , < |-----'
    *       `-----|  X  |-----|  V  |       ,-------.       ,-------.       |  B  |-----|  M  |-----'
-   *             `-----'     `-----'       |  Fn2  |       |       |       `-----'     `-----'
+   *             `-----'     `-----'       |  ETY  |       |       |       `-----'     `-----'
    *                                       |       |       |  Tab  |
-   *                            ,-------.  |  Fn1  |       |       |  ,-------.
+   *                            ,-------.  |  GAM  |       |       |  ,-------.
    *                            |S Ctl A|  `-------'       `-------'  |E AGr B|
    *                            |f     l|                             |n     s|
-   *                            |t Fn1 t|                             |t SPC p|
+   *                            |t SYM t|                             |t SPC p|
    *                            `-------'                             `-------'
    */
-  [_QWERTY] = KEYMAP
+  [_QTY] = KEYMAP
   (
                          Key_E                                                   ,Key_I
                  ,Key_W        ,Key_R ,Key_T                       ,Key_Y ,Key_U        ,Key_O
@@ -59,13 +59,13 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
           ,Key_Z        ,Key_C                                                   ,Key_N        ,Key_Comma
                  ,Key_X        ,Key_V                                     ,Key_B        ,Key_M
 
-                        ,MO(2)                                      ,Key_Tab
+                        ,MO(_ETY)                                   ,Key_Tab
            ,Key_NoKey                ,Key_NoKey            ,Key_Tab          ,Key_Tab
-                        ,TG(1)                                      ,Key_Tab
+                        ,TG(_GAM)                                   ,Key_Tab
 
                  ,Key_LCtrl                                               ,Key_RAlt
      ,Key_LShift               ,Key_LAlt                       ,Key_Enter           ,Key_Backspace
-                 ,MO(1)                                                   ,Key_Space
+                 ,MO(_SYM)                                                ,Key_Space
   ),
 
   /* 1 - Numbers, navigation & symbol layer
@@ -77,15 +77,15 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    * | Esc |-----|  `  |-----|  /  |  \  |                           |  =  |  -  |-----|  ]  |-----|     |
    * `-----| Lft |-----| Up  |-----+-----'                           `-----+-----|RClk |-----| End |-----'
    *       `-----| Dn  |-----| Rgt |       ,-------.       ,-------.       |LClk |-----| Home|-----'
-   *             `-----'     `-----'       |  Fn2  |       |M MUp M|       `-----'     `-----'
+   *             `-----'     `-----'       |  ETY  |       |M MUp M|       `-----'     `-----'
    *                                       |       |       |L     R|
-   *                            ,-------.  |  Fn0  |       |t Mdn g|  ,-------.
+   *                            ,-------.  |  GAM  |       |t Mdn g|  ,-------.
    *                            |S Ctl A|  `-------'       `-------'  |S AGr D|
    *                            |f     l|                             |f     e|
-   *                            |t Fn0 t|                             |t Cnt l|
+   *                            |t QTY t|                             |t Cnt l|
    *                            `-------'                             `-------'
    */
-  [_NNS] = KEYMAP
+  [_SYM] = KEYMAP
   (
                          Key_3                                                            ,Key_8
                  ,Key_2        ,Key_4     ,Key_5                       ,Key_6      ,Key_7        ,Key_9
@@ -102,7 +102,43 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
      ,Key_LShift               ,Key_LAlt                          ,Key_RShift          ,Key_Delete
                  ,___                                                        ,Key_RCtrl
   ),
-  /* 2 - Empty layer
+
+  /* 2 - Gaming layer
+   *
+   *                   ,-----.                                                   ,-----.
+   *             ,-----+  3  +-----------.                           ,-----------|  8  |-----.
+   *       ,-----|  2  |-----|  4  |  5  |                           |  6  |  7  |-----|  9  |-----.
+   * ,-----|  1  |-----|  '  |-----+-----|                           |-----+-----|  [  |-----|  0  |-----.
+   * | Esc |-----|  `  |-----|  /  |  \  |                           |  =  |  -  |-----|  ]  |-----|     |
+   * `-----| Lft |-----| Up  |-----+-----'                           `-----+-----|RClk |-----| End |-----'
+   *       `-----| Dn  |-----| Rgt |       ,-------.       ,-------.       |LClk |-----| Home|-----'
+   *             `-----'     `-----'       |  ETY  |       |M MUp M|       `-----'     `-----'
+   *                                       |       |       |L     R|
+   *                            ,-------.  |  QTY  |       |t Mdn g|  ,-------.
+   *                            |S Ctl A|  `-------'       `-------'  |       |
+   *                            |f     l|                             |       |
+   *                            |t QTY t|                             |       |
+   *                            `-------'                             `-------'
+   */
+  [_GAM] = KEYMAP
+  (
+                         Key_3                                                            ,Key_8
+                 ,Key_2        ,Key_4     ,Key_5                       ,Key_6      ,Key_7        ,Key_9
+          ,Key_1        ,Key_Quote                                                        ,Key_LSBrck   ,Key_0
+   ,Key_Esc      ,Key_Backtick ,Key_Slash ,Key_Backslash               ,Key_Equals ,Key_Minus    ,Key_RSBrck       ,Key_NoKey
+          ,Key_LArrow   ,Key_UpArrow                                                      ,Key_MBtnR    ,Key_End
+                 ,Key_DnArrow  ,Key_RArrow                                         ,Key_MBtnL    ,Key_Home
+
+                        ,___                                           ,Key_mouseUp
+           ,___                      ,___                     ,Key_mouseL        ,Key_mouseR
+                        ,___                                           ,Key_mouseDn
+
+                 ,Key_LCtrl                                                  ,Key_NoKey
+     ,Key_LShift               ,Key_LAlt                          ,Key_NoKey           ,Key_NoKey
+                 ,___                                                        ,Key_NoKey
+  ),
+
+  /* Empty layer
    *
    *                   ,-----.                                                   ,-----.
    *             ,-----+     +-----------.                           ,-----------|     |-----.
@@ -119,7 +155,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    *                            |       |                             |       |
    *                            `-------'                             `-------'
    */
-  [_EMPTY] = KEYMAP
+  [_ETY] = KEYMAP
   (
                          XXX                                                     ,XXX
                  ,XXX          ,XXX   ,XXX                         ,XXX   ,XXX          ,XXX

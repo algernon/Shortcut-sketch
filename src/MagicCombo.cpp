@@ -30,7 +30,7 @@ namespace algernon {
     };
 
     static const Akela::MagicCombo::dictionary_t dictionary[] PROGMEM = {
-      // L2 + CS (Qwerty)
+      // _ETY + CS (Qwerty)
       [CsillaQWERTY] = {R0C6 | R2C2 | R1C1,
                         0},
       {0, 0},
