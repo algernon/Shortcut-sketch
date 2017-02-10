@@ -108,13 +108,13 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    *
    *                   ,-----.                                                   ,-----.
    *             ,-----+     +-----------.                           ,-----------|     |-----.
-   *       ,-----|  W  |-----| Ent | Esc |                           | Alt | RCk |-----|  U  |-----.
+   *       ,-----|  W  |-----| Esc |     |                           | Alt | RCk |-----|  U  |-----.
    * ,-----|  A  |-----|  D  |-----+-----|                           |-----+-----| Lft |-----| Rgt |-----.
-   * |  1  |-----|  S  |-----| Spc |     |                           | Ctl | LCk |-----| Dwn |-----|     |
+   * |  1  |-----|  S  |-----| Ent |     |                           | Ctl | LCk |-----| Dwn |-----|     |
    * `-----|  2  |-----|  4  |-----+-----'                           `-----+-----| Hme |-----| End |-----'
    *       `-----|  3  |-----| Sft |       ,-------.       ,-------.       |     |-----|     |-----'
-   *             `-----'     `-----'       |  ETY  |       |   Q   |       `-----'     `-----'
-   *                                       |       |       |      F|
+   *             `-----'     `-----'       |  ETY  |       |  Spc  |       `-----'     `-----'
+   *                                       |       |       |Q     F|
    *                            ,-------.  |  QTY  |       |   E   |  ,-------.
    *                            |M MA+ M|  `-------'       `-------'  |M MUp M|
    *                            |S     S|                             |L     R|
@@ -124,14 +124,14 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   [_GAM] = KEYMAP
   (
                          XXX                                                              ,XXX
-                 ,Key_W        ,Key_Enter ,Key_Esc                     ,Key_LAlt   ,Key_MBtnR    ,Key_UpArrow
+                 ,Key_W        ,Key_Esc   ,XXX                         ,Key_LAlt   ,Key_MBtnR    ,Key_UpArrow
           ,Key_A        ,Key_D                                                            ,Key_LArrow   ,Key_RArrow
-   ,Key_1        ,Key_S        ,Key_Space ,XXX                         ,Key_LCtrl  ,Key_MBtnL    ,Key_DnArrow    ,XXX
+   ,Key_1        ,Key_S        ,Key_Enter ,XXX                         ,Key_LCtrl  ,Key_MBtnL    ,Key_DnArrow    ,XXX
           ,Key_2        ,Key_4                                                            ,Key_Home     ,Key_End
                  ,Key_3        ,Key_LShift                                         ,XXX          ,XXX
 
-                        ,___                                           ,Key_Q
-           ,___                      ,___                     ,XXX               ,Key_F
+                        ,___                                           ,Key_Space
+           ,___                      ,___                     ,Key_Q             ,Key_F
                         ,___                                           ,Key_E
 
                  ,M(MAP)                                                     ,Key_mouseUp
