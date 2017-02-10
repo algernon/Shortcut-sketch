@@ -18,9 +18,20 @@
 
 #pragma once
 
+#include <Keyboardio-Macros.h>
+
+enum {
+  MAP,
+  MAM,
+  MSP,
+  MSM,
+};
+
 namespace algernon {
   namespace Macros {
     void Csilla ();
     void Gergo ();
+
+    void configure (void);
   };
 };

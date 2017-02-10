@@ -22,6 +22,7 @@
 
 #include "Layers.h"
 #include "OneShot.h"
+#include "Macros.h"
 #include "MagicCombo.h"
 #include "MouseKeys.h"
 
@@ -79,7 +80,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    *       `-----| Dn  |-----| Rgt |       ,-------.       ,-------.       |LClk |-----| Home|-----'
    *             `-----'     `-----'       |  ETY  |       |M MUp M|       `-----'     `-----'
    *                                       |       |       |L     R|
-   *                            ,-------.  |  GAM  |       |t Mdn g|  ,-------.
+   *                            ,-------.  |  GAM  |       |t MDn g|  ,-------.
    *                            |S Ctl A|  `-------'       `-------'  |S AGr D|
    *                            |f     l|                             |f     e|
    *                            |t QTY t|                             |t Cnt l|
@@ -106,36 +107,36 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   /* 2 - Gaming layer
    *
    *                   ,-----.                                                   ,-----.
-   *             ,-----+  3  +-----------.                           ,-----------|  8  |-----.
-   *       ,-----|  2  |-----|  4  |  5  |                           |  6  |  7  |-----|  9  |-----.
-   * ,-----|  1  |-----|  '  |-----+-----|                           |-----+-----|  [  |-----|  0  |-----.
-   * | Esc |-----|  `  |-----|  /  |  \  |                           |  =  |  -  |-----|  ]  |-----|     |
+   *             ,-----+     +-----------.                           ,-----------|     |-----.
+   *       ,-----|  W  |-----|     | Ent |                           |     |     |-----|     |-----.
+   * ,-----|  A  |-----|  D  |-----+-----|                           |-----+-----|     |-----|     |-----.
+   * | Esc |-----|  S  |-----| Sft | Spc |                           | Alt | Ctl |-----|     |-----|     |
    * `-----| Lft |-----| Up  |-----+-----'                           `-----+-----|RClk |-----| End |-----'
    *       `-----| Dn  |-----| Rgt |       ,-------.       ,-------.       |LClk |-----| Home|-----'
-   *             `-----'     `-----'       |  ETY  |       |M MUp M|       `-----'     `-----'
-   *                                       |       |       |L     R|
-   *                            ,-------.  |  QTY  |       |t Mdn g|  ,-------.
-   *                            |S Ctl A|  `-------'       `-------'  |       |
-   *                            |f     l|                             |       |
-   *                            |t QTY t|                             |       |
+   *             `-----'     `-----'       |  ETY  |       |       |       `-----'     `-----'
+   *                                       |       |       |       |
+   *                            ,-------.  |  QTY  |       |       |  ,-------.
+   *                            |M MA+ M|  `-------'       `-------'  |M MUp M|
+   *                            |S     S|                             |L     R|
+   *                            |+ MA- -|                             |t MDn g|
    *                            `-------'                             `-------'
    */
   [_GAM] = KEYMAP
   (
-                         Key_3                                                            ,Key_8
-                 ,Key_2        ,Key_4     ,Key_5                       ,Key_6      ,Key_7        ,Key_9
-          ,Key_1        ,Key_Quote                                                        ,Key_LSBrck   ,Key_0
-   ,Key_Esc      ,Key_Backtick ,Key_Slash ,Key_Backslash               ,Key_Equals ,Key_Minus    ,Key_RSBrck       ,Key_NoKey
+                         XXX                                                              ,XXX
+                 ,Key_W        ,XXX       ,Key_Enter                   ,XXX        ,XXX          ,XXX
+          ,Key_A        ,Key_D                                                            ,XXX          ,XXX
+   ,Key_Esc      ,Key_S        ,Key_LShift,Key_Space                   ,Key_LAlt   ,Key_LCtrl    ,XXX            ,XXX
           ,Key_LArrow   ,Key_UpArrow                                                      ,Key_MBtnR    ,Key_End
                  ,Key_DnArrow  ,Key_RArrow                                         ,Key_MBtnL    ,Key_Home
 
-                        ,___                                           ,Key_mouseUp
-           ,___                      ,___                     ,Key_mouseL        ,Key_mouseR
-                        ,___                                           ,Key_mouseDn
+                        ,___                                           ,XXX
+           ,___                      ,___                     ,XXX               ,XXX
+                        ,___                                           ,XXX
 
-                 ,Key_LCtrl                                                  ,Key_NoKey
-     ,Key_LShift               ,Key_LAlt                          ,Key_NoKey           ,Key_NoKey
-                 ,___                                                        ,Key_NoKey
+                 ,M(MAP)                                                     ,Key_mouseUp
+     ,M(MSP)                   ,M(MSM)                            ,Key_mouseL          ,Key_mouseR
+                 ,M(MAM)                                                     ,Key_mouseDn
   ),
 
   /* Empty layer
@@ -183,6 +184,9 @@ void setup () {
   algernon::MouseKeys::configure ();
   algernon::OneShot::configure ();
   algernon::MagicCombo::configure ();
+  algernon::Macros::configure ();
+
+  Layer.on (_GAM);
 }
 
 void loop () {
