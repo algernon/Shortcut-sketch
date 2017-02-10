@@ -18,12 +18,9 @@
 
 #pragma once
 
-// LAYERS
-
-enum {
-  _QWERTY,
-  _NNS,
-  _EMPTY,
-
-  LAYER_MAX
+namespace algernon {
+  namespace Macros {
+    void Csilla ();
+    void Gergo ();
+  };
 };

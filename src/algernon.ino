@@ -19,8 +19,11 @@
 #include "KeyboardioFirmware.h"
 #include "Keyboardio-MouseKeys.h"
 
+#include "Akela-LangPack-Hungarian.h"
+
 #include "Layers.h"
 #include "OneShot.h"
+#include "MagicCombo.h"
 
 #define Key_LSBrck Key_LSquareBracket
 #define Key_RSBrck Key_RSquareBracket
@@ -39,7 +42,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    * |  Q  |-----|  S  |-----|  F  |  G  |                           |  H  |  J  |-----|  L  |-----| . > |
    * `-----|  Z  |-----|  C  |-----+-----'                           `-----+-----|  N  |-----| , < |-----'
    *       `-----|  X  |-----|  V  |       ,-------.       ,-------.       |  B  |-----|  M  |-----'
-   *             `-----'     `-----'       |       |       |       |       `-----'     `-----'
+   *             `-----'     `-----'       |  Fn2  |       |       |       `-----'     `-----'
    *                                       |       |       |  Tab  |
    *                            ,-------.  |  Fn1  |       |       |  ,-------.
    *                            |S Ctl A|  `-------'       `-------'  |E AGr B|
@@ -56,8 +59,8 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
           ,Key_Z        ,Key_C                                                   ,Key_N        ,Key_Comma
                  ,Key_X        ,Key_V                                     ,Key_B        ,Key_M
 
-                        ,Key_NoKey                                  ,Key_Tab
-           ,Key_NoKey                ,Key_NoKey            ,Key_Tab        ,Key_Tab
+                        ,MO(2)                                      ,Key_Tab
+           ,Key_NoKey                ,Key_NoKey            ,Key_Tab          ,Key_Tab
                         ,TG(1)                                      ,Key_Tab
 
                  ,Key_LCtrl                                               ,Key_RAlt
@@ -74,7 +77,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    * | Esc |-----|  `  |-----|  /  |  \  |                           |  =  |  -  |-----|  ]  |-----|     |
    * `-----| Lft |-----| Up  |-----+-----'                           `-----+-----|RClk |-----| End |-----'
    *       `-----| Dn  |-----| Rgt |       ,-------.       ,-------.       |LClk |-----| Home|-----'
-   *             `-----'     `-----'       |       |       |M MUp M|       `-----'     `-----'
+   *             `-----'     `-----'       |  Fn2  |       |M MUp M|       `-----'     `-----'
    *                                       |       |       |L     R|
    *                            ,-------.  |  Fn0  |       |t Mdn g|  ,-------.
    *                            |S Ctl A|  `-------'       `-------'  |S AGr D|
@@ -98,8 +101,41 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
                  ,Key_LCtrl                                                  ,Key_RAlt
      ,Key_LShift               ,Key_LAlt                          ,Key_RShift          ,Key_Delete
                  ,___                                                        ,Key_RCtrl
-  )
+  ),
+  /* 2 - Empty layer
+   *
+   *                   ,-----.                                                   ,-----.
+   *             ,-----+     +-----------.                           ,-----------|     |-----.
+   *       ,-----|     |-----|     |     |                           |     |     |-----|     |-----.
+   * ,-----|     |-----|     |-----+-----|                           |-----+-----|     |-----|     |-----.
+   * |     |-----|     |-----|     |     |                           |     |     |-----|     |-----|     |
+   * `-----|     |-----|     |-----+-----'                           `-----+-----|     |-----|     |-----'
+   *       `-----|     |-----|     |       ,-------.       ,-------.       |     |-----|     |-----'
+   *             `-----'     `-----'       |       |       |       |       `-----'     `-----'
+   *                                       |       |       |       |
+   *                            ,-------.  |       |       |       |  ,-------.
+   *                            |       |  `-------'       `-------'  |       |
+   *                            |       |                             |       |
+   *                            |       |                             |       |
+   *                            `-------'                             `-------'
+   */
+  [_EMPTY] = KEYMAP
+  (
+                         XXX                                                     ,XXX
+                 ,XXX          ,XXX   ,XXX                         ,XXX   ,XXX          ,XXX
+          ,XXX          ,XXX                                                     ,XXX          ,XXX
+   ,XXX          ,XXX          ,XXX   ,XXX                         ,XXX   ,XXX          ,XXX              ,XXX
+          ,XXX          ,XXX                                                     ,XXX          ,XXX
+                 ,XXX          ,XXX                                       ,XXX          ,XXX
 
+                        ,___                                        ,XXX
+           ,XXX                      ,XXX                  ,XXX            ,XXX
+                        ,XXX                                        ,XXX
+
+                 ,XXX                                                     ,XXX
+     ,XXX                      ,XXX                            ,XXX                 ,XXX
+                 ,XXX                                                     ,XXX
+  ),
 };
 
 void setup () {
@@ -109,9 +145,10 @@ void setup () {
   AbsoluteMouse.begin ();
 
   Keyboardio.setup (KEYMAP_SIZE);
-  Keyboardio.use (&MouseKeys, NULL);
+  Keyboardio.use (&MouseKeys, &Hungarian, NULL);
 
   algernon::OneShot::configure ();
+  algernon::MagicCombo::configure ();
 }
 
 void loop () {

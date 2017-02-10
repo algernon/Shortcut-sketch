@@ -16,14 +16,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "MagicCombo.h"
+#include "Layers.h"
+#include "Macros.h"
 
-// LAYERS
+#include <Akela-MagicCombo.h>
 
-enum {
-  _QWERTY,
-  _NNS,
-  _EMPTY,
+namespace algernon {
+  namespace MagicCombo {
 
-  LAYER_MAX
+    enum {
+      CsillaQWERTY,
+    };
+
+    static const Akela::MagicCombo::dictionary_t dictionary[] PROGMEM = {
+      // L2 + CS (Qwerty)
+      [CsillaQWERTY] = {R0C6 | R2C2 | R1C1,
+                        0},
+      {0, 0},
+    };
+
+    void
+    configure (void) {
+      Keyboardio.use (&::MagicCombo, NULL);
+
+      ::MagicCombo.configure (dictionary);
+    }
+  };
 };
+
+void magicComboActions (uint8_t comboIndex, uint32_t leftHand, uint32_t rightHand) {
+  switch (comboIndex) {
+  case algernon::MagicCombo::CsillaQWERTY:
+    algernon::Macros::Csilla ();
+    break;
+  }
+}
