@@ -108,14 +108,14 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    *
    *                   ,-----.                                                   ,-----.
    *             ,-----+     +-----------.                           ,-----------|     |-----.
-   *       ,-----|  W  |-----| Ent |     |                           | Alt |     |-----|     |-----.
-   * ,-----|  A  |-----|  D  |-----+-----|                           |-----+-----| RCk |-----|     |-----.
-   * | Esc |-----|  S  |-----| Spc |     |                           | Ctl | LCk |-----|     |-----|     |
-   * `-----|     |-----|     |-----+-----'                           `-----+-----|     |-----| End |-----'
-   *       `-----|     |-----| Sft |       ,-------.       ,-------.       |     |-----| Home|-----'
-   *             `-----'     `-----'       |  ETY  |       |       |       `-----'     `-----'
-   *                                       |       |       |       |
-   *                            ,-------.  |  QTY  |       |       |  ,-------.
+   *       ,-----|  W  |-----| Ent | Esc |                           | Alt | RCk |-----|  U  |-----.
+   * ,-----|  A  |-----|  D  |-----+-----|                           |-----+-----| Lft |-----| Rgt |-----.
+   * |  1  |-----|  S  |-----| Spc |     |                           | Ctl | LCk |-----| Dwn |-----|     |
+   * `-----|  2  |-----|  4  |-----+-----'                           `-----+-----| Hme |-----| End |-----'
+   *       `-----|  3  |-----| Sft |       ,-------.       ,-------.       |     |-----|     |-----'
+   *             `-----'     `-----'       |  ETY  |       |   Q   |       `-----'     `-----'
+   *                                       |       |       |      F|
+   *                            ,-------.  |  QTY  |       |   E   |  ,-------.
    *                            |M MA+ M|  `-------'       `-------'  |M MUp M|
    *                            |S     S|                             |L     R|
    *                            |+ MA- -|                             |t MDn g|
@@ -124,15 +124,15 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   [_GAM] = KEYMAP
   (
                          XXX                                                              ,XXX
-                 ,Key_W        ,Key_Enter ,XXX                         ,Key_LAlt   ,XXX          ,XXX
-          ,Key_A        ,Key_D                                                            ,Key_MBtnR    ,XXX
-   ,Key_Esc      ,Key_S        ,Key_Space ,XXX                         ,Key_LCtrl  ,Key_MBtnL    ,XXX            ,XXX
-          ,XXX          ,XXX                                                              ,XXX          ,Key_End
-                 ,XXX          ,Key_LShift                                         ,XXX          ,Key_Home
+                 ,Key_W        ,Key_Enter ,Key_Esc                     ,Key_LAlt   ,Key_MBtnR    ,Key_UpArrow
+          ,Key_A        ,Key_D                                                            ,Key_LArrow   ,Key_RArrow
+   ,Key_1        ,Key_S        ,Key_Space ,XXX                         ,Key_LCtrl  ,Key_MBtnL    ,Key_DnArrow    ,XXX
+          ,Key_2        ,Key_4                                                            ,Key_Home     ,Key_End
+                 ,Key_3        ,Key_LShift                                         ,XXX          ,XXX
 
-                        ,___                                           ,XXX
-           ,___                      ,___                     ,XXX               ,XXX
-                        ,___                                           ,XXX
+                        ,___                                           ,Key_Q
+           ,___                      ,___                     ,XXX               ,Key_F
+                        ,___                                           ,Key_E
 
                  ,M(MAP)                                                     ,Key_mouseUp
      ,M(MSP)                   ,M(MSM)                            ,Key_mouseL          ,Key_mouseR
