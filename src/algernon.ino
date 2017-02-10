@@ -17,13 +17,13 @@
  */
 
 #include "KeyboardioFirmware.h"
-#include "Keyboardio-MouseKeys.h"
 
 #include "Akela-LangPack-Hungarian.h"
 
 #include "Layers.h"
 #include "OneShot.h"
 #include "MagicCombo.h"
+#include "MouseKeys.h"
 
 #define Key_LSBrck Key_LSquareBracket
 #define Key_RSBrck Key_RSquareBracket
@@ -141,12 +141,10 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 void setup () {
   Serial.begin(9600);
 
-  Mouse.begin ();
-  AbsoluteMouse.begin ();
-
   Keyboardio.setup (KEYMAP_SIZE);
-  Keyboardio.use (&MouseKeys, &Hungarian, NULL);
+  Keyboardio.use (&Hungarian, NULL);
 
+  algernon::MouseKeys::configure ();
   algernon::OneShot::configure ();
   algernon::MagicCombo::configure ();
 }
