@@ -34,15 +34,15 @@
 #define TG(layer) (Key){ layer, KEY_FLAGS | SYNTHETIC | SWITCH_TO_KEYMAP }
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
-  /* 0 - Base layer
+  /* Dvorak layer
    *
    *                   ,-----.                                                   ,-----.
-   *             ,-----+  E  +-----------.                           ,-----------|  I  |-----.
-   *       ,-----|  W  |-----|  R  |  T  |                           |  Y  |  U  |-----|  O  |-----.
-   * ,-----|  A  |-----|  D  |-----+-----|                           |-----+-----|  K  |-----|  P  |-----.
-   * |  Q  |-----|  S  |-----|  F  |  G  |                           |  H  |  J  |-----|  L  |-----| . > |
-   * `-----|  Z  |-----|  C  |-----+-----'                           `-----+-----|  N  |-----| , < |-----'
-   *       `-----|  X  |-----|  V  |       ,-------.       ,-------.       |  B  |-----|  M  |-----'
+   *             ,-----+  .  +-----------.                           ,-----------|  C  |-----.
+   *       ,-----|  ,  |-----|  P  |  Y  |                           |  F  |  G  |-----|  R  |-----.
+   * ,-----|  A  |-----|  E  |-----+-----|                           |-----+-----|  T  |-----|  L  |-----.
+   * |  Z  |-----|  O  |-----|  U  |  I  |                           |  D  |  H  |-----|  N  |-----| S   |
+   * `-----|  Q  |-----|  K  |-----+-----'                           `-----+-----|  M  |-----|  V  |-----'
+   *       `-----|  J  |-----|  X  |       ,-------.       ,-------.       |  B  |-----|  W  |-----'
    *             `-----'     `-----'       |  ETY  |       |       |       `-----'     `-----'
    *                                       |       |       |  Tab  |
    *                            ,-------.  |  GAM  |       |       |  ,-------.
@@ -51,14 +51,14 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    *                            |t SYM t|                             |t SPC p|
    *                            `-------'                             `-------'
    */
-  [_QTY] = KEYMAP
+  [_DVK] = KEYMAP
   (
-                         Key_E                                                   ,Key_I
-                 ,Key_W        ,Key_R ,Key_T                       ,Key_Y ,Key_U        ,Key_O
-          ,Key_A        ,Key_D                                                   ,Key_K        ,Key_P
-   ,Key_Q        ,Key_S        ,Key_F ,Key_G                       ,Key_H ,Key_J        ,Key_L            ,Key_Period
-          ,Key_Z        ,Key_C                                                   ,Key_N        ,Key_Comma
-                 ,Key_X        ,Key_V                                     ,Key_B        ,Key_M
+                         Key_Period                                              ,Key_C
+                 ,Key_Comma    ,Key_P ,Key_Y                       ,Key_F ,Key_G        ,Key_R
+          ,Key_A        ,Key_E                                                   ,Key_T        ,Key_L
+   ,Key_Z        ,Key_O        ,Key_U ,Key_I                       ,Key_D ,Key_H        ,Key_N        ,Key_S
+          ,Key_Q        ,Key_K                                                   ,Key_M        ,Key_V
+                 ,Key_J        ,Key_X                                     ,Key_B        ,Key_W
 
                         ,MO(_ETY)                                   ,Key_Tab
            ,Key_NoKey                ,Key_NoKey            ,Key_Tab          ,Key_Tab
@@ -69,7 +69,8 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
                  ,MO(_SYM)                                                ,Key_Space
   ),
 
-  /* 1 - Numbers, navigation & symbol layer
+
+  /* Numbers, navigation & symbol layer
    *
    *                   ,-----.                                                   ,-----.
    *             ,-----+  3  +-----------.                           ,-----------|  8  |-----.
@@ -104,7 +105,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
                  ,___                                                        ,Key_RCtrl
   ),
 
-  /* 2 - Gaming layer
+  /* Gaming layer
    *
    *                   ,-----.                                                   ,-----.
    *             ,-----+     +-----------.                           ,-----------|     |-----.
@@ -186,7 +187,7 @@ void setup () {
   algernon::MagicCombo::configure ();
   algernon::Macros::configure ();
 
-  Layer.on (_GAM);
+  Layer.on (_DVK);
 }
 
 void loop () {

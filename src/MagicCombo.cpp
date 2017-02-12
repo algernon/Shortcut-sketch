@@ -26,13 +26,13 @@ namespace algernon {
   namespace MagicCombo {
 
     enum {
-      CsillaQWERTY,
+      CsillaDvorak,
     };
 
     static const KaleidoscopePlugins::MagicCombo::dictionary_t dictionary[] PROGMEM = {
-      // _ETY + CS (Qwerty)
-      [CsillaQWERTY] = {R0C6 | R2C2 | R1C1,
-                        0},
+      // _ETY + CS (Dvorak)
+      [CsillaDvorak] = {R0C6,
+                        R0C11 | R2C13},
       {0, 0},
     };
 
@@ -47,7 +47,7 @@ namespace algernon {
 
 void magicComboActions (uint8_t comboIndex, uint32_t leftHand, uint32_t rightHand) {
   switch (comboIndex) {
-  case algernon::MagicCombo::CsillaQWERTY:
+  case algernon::MagicCombo::CsillaDvorak:
     algernon::Macros::Csilla ();
     break;
   }

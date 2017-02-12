@@ -21,7 +21,7 @@
 // LAYERS
 
 enum {
-  _QTY,
+  _DVK,
   _SYM,
   _GAM,
   _ETY,
