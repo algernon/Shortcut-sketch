@@ -16,9 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "KeyboardioFirmware.h"
+#include "Kaleidoscope.h"
 
-#include "Akela-LangPack-Hungarian.h"
+#include "Kaleidoscope-LangPack-Hungarian.h"
 
 #include "Layers.h"
 #include "OneShot.h"
@@ -178,8 +178,8 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 void setup () {
   Serial.begin(9600);
 
-  Keyboardio.setup (KEYMAP_SIZE);
-  Keyboardio.use (&Hungarian, NULL);
+  Kaleidoscope.setup (KEYMAP_SIZE);
+  Kaleidoscope.use (&Hungarian, NULL);
 
   algernon::MouseKeys::configure ();
   algernon::OneShot::configure ();
@@ -190,5 +190,5 @@ void setup () {
 }
 
 void loop () {
-  Keyboardio.loop ();
+  Kaleidoscope.loop ();
 }

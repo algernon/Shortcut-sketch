@@ -26,7 +26,7 @@ namespace algernon {
       Mouse.begin ();
       AbsoluteMouse.begin ();
 
-      Keyboardio.use (&::MouseKeys, NULL);
+      Kaleidoscope.use (&::MouseKeys, NULL);
 
       ::MouseKeys.speedDelay = 10;
       ::MouseKeys.speed = 1;

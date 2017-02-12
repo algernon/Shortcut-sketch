@@ -1,7 +1,7 @@
 build:
 
 setup:
-	@sh -c '. ./.keyboardio-builder.conf && setup'
+	@sh -c '. ./.kaleidoscope-builder.conf && setup'
 
 %:
-	@lib/KeyboardioFirmware/tools/keyboardio-builder $@
+	@lib/Kaleidoscope/tools/kaleidoscope-builder $@

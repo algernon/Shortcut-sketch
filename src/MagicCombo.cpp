@@ -20,7 +20,7 @@
 #include "Layers.h"
 #include "Macros.h"
 
-#include <Akela-MagicCombo.h>
+#include <Kaleidoscope-MagicCombo.h>
 
 namespace algernon {
   namespace MagicCombo {
@@ -29,7 +29,7 @@ namespace algernon {
       CsillaQWERTY,
     };
 
-    static const Akela::MagicCombo::dictionary_t dictionary[] PROGMEM = {
+    static const KaleidoscopePlugins::MagicCombo::dictionary_t dictionary[] PROGMEM = {
       // _ETY + CS (Qwerty)
       [CsillaQWERTY] = {R0C6 | R2C2 | R1C1,
                         0},
@@ -38,7 +38,7 @@ namespace algernon {
 
     void
     configure (void) {
-      Keyboardio.use (&::MagicCombo, NULL);
+      Kaleidoscope.use (&::MagicCombo, NULL);
 
       ::MagicCombo.configure (dictionary);
     }

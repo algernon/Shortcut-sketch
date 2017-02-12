@@ -19,14 +19,14 @@
 #include "OneShot.h"
 #include "Layers.h"
 
-#include <Akela-OneShot.h>
+#include <Kaleidoscope-OneShot.h>
 
 namespace algernon {
   namespace OneShot {
     void
     configure (void) {
       ::OneShot.enableAuto();
-      Keyboardio.use (&::OneShot, NULL);
+      Kaleidoscope.use (&::OneShot, NULL);
     }
   };
 };

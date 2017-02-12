@@ -5,11 +5,11 @@ algernon's Shortcut firmware
 
 [![Build Status](https://travis-ci.org/algernon/Shortcut-sketch.svg?branch=master)](https://travis-ci.org/algernon/Shortcut-sketch)
 
-This is my work in progress firmware Sketch for the [Shortcut][shortcut], using the [KeyboardioFirmware][kbfw] together with a fair amount of plugins.
+This is my work in progress firmware Sketch for the [Shortcut][shortcut], using [Kaleidoscope][ks] together with a fair amount of plugins.
 
 This is a reasonably complete example of how to work with the firmware, and surrounding libraries, to extend it, to compose the various components, to have something useful in the end.
 
- [kbfw]: https://github.com/keyboardio/KeyboardioFirmware
+ [ks]: https://github.com/keyboardio/Kaleidoscope
  [shortcut]: http://shortcut.gg/
 
 It is a heavy work in progress, with some awful hacks and workarounds here and there. Eventually these will be cleaned up.

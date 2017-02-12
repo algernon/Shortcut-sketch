@@ -17,10 +17,10 @@
  */
 
 #include "Macros.h"
-#include <Akela-LangPack-Hungarian.h>
-#include <Keyboardio-MouseKeys.h>
+#include <Kaleidoscope-LangPack-Hungarian.h>
+#include <Kaleidoscope-MouseKeys.h>
 
-using namespace Akela::LangPack;
+using namespace KaleidoscopePlugins::LangPack;
 
 namespace algernon {
   namespace Macros {
@@ -69,7 +69,7 @@ namespace algernon {
 
     void
     configure (void) {
-      Keyboardio.use (&::Macros, NULL);
+      Kaleidoscope.use (&::Macros, NULL);
     }
   }
 }

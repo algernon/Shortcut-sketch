@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include <Keyboardio-MouseKeys.h>
+#include <Kaleidoscope-MouseKeys.h>
 
 namespace algernon {
   namespace MouseKeys {

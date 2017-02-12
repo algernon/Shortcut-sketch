@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include <Keyboardio-Macros.h>
+#include <Kaleidoscope-Macros.h>
 
 enum {
   MAP,
