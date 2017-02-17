@@ -17,9 +17,9 @@
  */
 
 #include "Kaleidoscope.h"
-
 #include "Kaleidoscope-LangPack-Hungarian.h"
 
+#include "ActiveLayerColor.h"
 #include "Layers.h"
 #include "OneShot.h"
 #include "Macros.h"
@@ -162,7 +162,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
                          XXX                                                     ,XXX
                  ,XXX          ,XXX   ,XXX                         ,XXX   ,XXX          ,XXX
           ,XXX          ,XXX                                                     ,XXX          ,XXX
-   ,XXX          ,XXX          ,XXX   ,XXX                         ,XXX   ,XXX          ,XXX              ,XXX
+   ,XXX          ,XXX          ,XXX   ,XXX                         ,XXX   ,XXX          ,XXX          ,XXX
           ,XXX          ,XXX                                                     ,XXX          ,XXX
                  ,XXX          ,XXX                                       ,XXX          ,XXX
 
@@ -182,6 +182,7 @@ void setup () {
   Kaleidoscope.setup (KEYMAP_SIZE);
   Kaleidoscope.use (&Hungarian, NULL);
 
+  algernon::ActiveLayerColor::configure ();
   algernon::MouseKeys::configure ();
   algernon::OneShot::configure ();
   algernon::MagicCombo::configure ();
