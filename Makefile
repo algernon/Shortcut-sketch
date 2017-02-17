@@ -4,4 +4,4 @@ setup:
 	@sh -c '. ./.kaleidoscope-builder.conf && setup'
 
 %:
-	@lib/Kaleidoscope/tools/kaleidoscope-builder $@
+	@hardware/keyboardio/avr/libraries/Kaleidoscope/tools/kaleidoscope-builder $@
