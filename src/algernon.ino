@@ -118,9 +118,9 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    *             `-----'     `-----'       |  ETY  |       |  Spc  |       `-----'     `-----'
    *                                       |       |       |Q     F|
    *                            ,-------.  |  QTY  |       |   E   |  ,-------.
-   *                            |M MA+ M|  `-------'       `-------'  |M MUp M|
-   *                            |S     S|                             |L     R|
-   *                            |+ MA- -|                             |t MDn g|
+   *                            |M MS+ M|  `-------'       `-------'  |M MUp M|
+   *                            |A     A|                             |L     R|
+   *                            |- MS- +|                             |t MDn g|
    *                            `-------'                             `-------'
    */
   [_GAM] = KEYMAP
@@ -136,9 +136,9 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
            ,___                      ,___                     ,Key_Q             ,Key_F
                         ,___                                           ,Key_E
 
-                 ,M(MAP)                                                     ,Key_mouseUp
-     ,M(MSP)                   ,M(MSM)                            ,Key_mouseL          ,Key_mouseR
-                 ,M(MAM)                                                     ,Key_mouseDn
+                 ,M(MSP)                                                     ,Key_mouseUp
+     ,M(MAM)                   ,M(MAP)                            ,Key_mouseL          ,Key_mouseR
+                 ,M(MSM)                                                     ,Key_mouseDn
   ),
 
   /* Empty layer
