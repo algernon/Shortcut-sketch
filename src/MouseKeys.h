@@ -19,6 +19,7 @@
 #pragma once
 
 #include <Kaleidoscope-MouseKeys.h>
+#include <Kaleidoscope-MouseGears.h>
 
 namespace algernon {
   namespace MouseKeys {
@@ -30,10 +31,5 @@ namespace algernon {
     };
 
     void configure (void);
-
-    void accelUp (void);
-    void accelDown (void);
-    void speedUp (void);
-    void speedDown (void);
   };
 };

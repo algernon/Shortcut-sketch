@@ -83,16 +83,16 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   switch (macroIndex) {
   case MAP:
-    accelUp ();
+    MouseGears.accelUp ();
     break;
   case MAM:
-    accelDown ();
+    MouseGears.accelDown ();
     break;
   case MSP:
-    speedUp ();
+    MouseGears.speedUp ();
     break;
   case MSM:
-    speedDown ();
+    MouseGears.speedDown ();
     break;
   }
 
