@@ -22,6 +22,18 @@
 
 namespace algernon {
   namespace MouseKeys {
+    enum {
+      MAP,
+      MAM,
+      MSP,
+      MSM,
+    };
+
     void configure (void);
+
+    void accelUp (void);
+    void accelDown (void);
+    void speedUp (void);
+    void speedDown (void);
   };
 };

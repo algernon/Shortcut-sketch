@@ -20,13 +20,6 @@
 
 #include <Kaleidoscope-Macros.h>
 
-enum {
-  MAP,
-  MAM,
-  MSP,
-  MSM,
-};
-
 namespace algernon {
   namespace Macros {
     void Csilla ();

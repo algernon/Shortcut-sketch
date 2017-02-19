@@ -33,6 +33,8 @@
 
 #define TG(layer) (Key){ layer, KEY_FLAGS | SYNTHETIC | SWITCH_TO_KEYMAP }
 
+using namespace algernon::MouseKeys;
+
 const Key keymaps[][ROWS][COLS] PROGMEM = {
   /* Dvorak layer
    *

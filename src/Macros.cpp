@@ -17,10 +17,13 @@
  */
 
 #include "Macros.h"
+#include "MouseKeys.h"
+
 #include <Kaleidoscope-LangPack-Hungarian.h>
 #include <Kaleidoscope-MouseKeys.h>
 
 using namespace KaleidoscopePlugins::LangPack;
+using namespace algernon::MouseKeys;
 
 namespace algernon {
   namespace Macros {
@@ -80,45 +83,29 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 
   switch (macroIndex) {
   case MAP:
-    if (MouseKeys.accelDelay > 10)
-      MouseKeys.accelDelay -= 10;
-    else if (MouseKeys.accelDelay > 0)
-      MouseKeys.accelDelay = 0;
-    else if (MouseKeys.accelSpeed < 255)
-      MouseKeys.accelSpeed++;
+    accelUp ();
     break;
   case MAM:
-    if (MouseKeys.accelSpeed > 0)
-      MouseKeys.accelSpeed--;
-    else if (MouseKeys.accelDelay < 1000)
-      MouseKeys.accelDelay += 10;
+    accelDown ();
     break;
   case MSP:
-    if (MouseKeys.speedDelay > 10)
-      MouseKeys.speedDelay -= 10;
-    else if (MouseKeys.speedDelay > 0)
-      MouseKeys.speedDelay = 0;
-    else if (MouseKeys.speed < 255)
-      MouseKeys.speed++;
+    speedUp ();
     break;
   case MSM:
-    if (MouseKeys.speed > 1)
-      MouseKeys.speed--;
-    else if (MouseKeys.speedDelay < 1000)
-      MouseKeys.speedDelay += 10;
+    speedDown ();
     break;
   }
 
   switch (macroIndex) {
   case MAP ... MSM:
     Serial.print (F("# mouse: speed="));
-    Serial.print (MouseKeys.speed);
+    Serial.print (::MouseKeys.speed);
     Serial.print (F("; speedDelay="));
-    Serial.print (MouseKeys.speedDelay);
+    Serial.print (::MouseKeys.speedDelay);
     Serial.print (F("; accelSpeed="));
-    Serial.print (MouseKeys.accelSpeed);
+    Serial.print (::MouseKeys.accelSpeed);
     Serial.print (F("; accelDelay="));
-    Serial.println (MouseKeys.accelDelay);
+    Serial.println (::MouseKeys.accelDelay);
     break;
   }
 
