@@ -71,7 +71,6 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
                  ,MO(_SYM)                                                ,Key_Space
   ),
 
-
   /* Numbers, navigation & symbol layer
    *
    *                   ,-----.                                                   ,-----.
