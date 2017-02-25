@@ -190,6 +190,8 @@ void setup () {
   algernon::Macros::configure ();
 
   Layer.on (_DVK);
+
+  LEDControl.syncDelay = 64;
 }
 
 void loop () {
