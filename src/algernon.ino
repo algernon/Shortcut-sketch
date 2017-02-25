@@ -194,6 +194,24 @@ void setup () {
   LEDControl.syncDelay = 64;
 }
 
+static unsigned long avgLoopTime = 0;
+static unsigned long nextReport = millis() + 1000;
+
 void loop () {
-  Kaleidoscope.loop ();
+  unsigned long loopStart = micros ();
+
+  Kaleidoscope.loop();
+
+  unsigned long loopTime = micros () - loopStart;
+
+  if (avgLoopTime)
+    avgLoopTime = (avgLoopTime + loopTime) / 2;
+  else
+    avgLoopTime = loopTime;
+
+  if (millis () >= nextReport) {
+    Serial.print (F("avgLoopTime: "));
+    Serial.println (avgLoopTime);
+    nextReport = millis() + 1000;
+  }
 }
