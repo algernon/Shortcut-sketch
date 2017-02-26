@@ -16,6 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define DEBUG 0
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-LangPack-Hungarian.h"
 
@@ -194,14 +195,19 @@ void setup () {
   LEDControl.syncDelay = 64;
 }
 
+#if DEBUG
 static unsigned long avgLoopTime = 0;
 static unsigned long nextReport = millis() + 1000;
+#endif
 
 void loop () {
+#if DEBUG
   unsigned long loopStart = micros ();
+#endif
 
   Kaleidoscope.loop();
 
+#if DEBUG
   unsigned long loopTime = micros () - loopStart;
 
   if (avgLoopTime)
@@ -214,4 +220,5 @@ void loop () {
     Serial.println (avgLoopTime);
     nextReport = millis() + 1000;
   }
+#endif
 }
