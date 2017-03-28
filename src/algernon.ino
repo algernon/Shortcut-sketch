@@ -186,7 +186,10 @@ void setup () {
   Serial.begin(9600);
 
   Kaleidoscope.setup (KEYMAP_SIZE);
-  Kaleidoscope.use (&Hungarian, &LEDControl, NULL);
+  Kaleidoscope.use (&EEPROMSettings, &EEPROMKeymap,
+                    &Hungarian, &LEDControl, NULL);
+
+  EEPROMKeymap.reserveSpace (LAYER_MAX);
 
   //algernon::ActiveLayerColor::configure ();
   algernon::MouseKeys::configure ();
@@ -196,13 +199,27 @@ void setup () {
 
   Layer.on (_DVK);
 
+  Layer.getKey = EEPROMKeymap.getKeyOverride;
+
   LEDControl.syncDelay = 64;
 
   USE_PLUGINS (&Focus);
 
   Focus.addHook (FOCUS_HOOK_HELP);
-  Focus.addHook (FOCUS_HOOK_LEDCONTROL);
   Focus.addHook (FOCUS_HOOK_VERSION);
+  Focus.addHook (FOCUS_HOOK_KEYMAP);
+  Focus.addHook (FOCUS_HOOK_KEYMAP_TRANSFER);
+  Focus.addHook (FOCUS_HOOK_EEPROM);
+  Focus.addHook (FOCUS_HOOK_KALEIDOSCOPE);
+  Focus.addHook (FOCUS_HOOK_LEDCONTROL);
+  Focus.addHook (FOCUS_HOOK_SETTINGS);
+
+  EEPROMSettings.seal ();
+
+  if (!EEPROMSettings.isValid ()) {
+    EEPROMSettings.version (0);
+    EEPROMSettings.update ();
+  }
 }
 
 #if WITH_CYCLE_REPORT
