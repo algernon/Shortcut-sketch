@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define DEBUG 0
-#define FOCUS_WITHOUT_DOCS 0
+#include "00-config.h"
 
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-LangPack-Hungarian.h"
@@ -206,19 +205,19 @@ void setup () {
   Focus.addHook (FOCUS_HOOK_VERSION);
 }
 
-#if DEBUG
+#if WITH_CYCLE_REPORT
 static unsigned long avgLoopTime = 0;
 static unsigned long nextReport = millis() + 1000;
 #endif
 
 void loop () {
-#if DEBUG
+#if WITH_CYCLE_REPORT
   unsigned long loopStart = micros ();
 #endif
 
   Kaleidoscope.loop();
 
-#if DEBUG
+#if WITH_CYCLE_REPORT
   unsigned long loopTime = micros () - loopStart;
 
   if (avgLoopTime)
