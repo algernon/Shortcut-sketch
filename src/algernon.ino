@@ -202,13 +202,8 @@ void setup () {
   USE_PLUGINS (&Focus);
 
   Focus.addHook (FOCUS_HOOK_HELP);
-  Focus.addHook (FOCUS_HOOK_KEYMAP);
   Focus.addHook (FOCUS_HOOK_LEDCONTROL);
   Focus.addHook (FOCUS_HOOK_VERSION);
-
-  USE_PLUGINS (&EEPROMSettings, &EEPROMKeymap);
-
-  Layer.getKey = EEPROMKeymap.getKey;
 }
 
 #if DEBUG
