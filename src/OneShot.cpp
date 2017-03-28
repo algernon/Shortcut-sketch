@@ -25,7 +25,6 @@ namespace algernon {
   namespace OneShot {
     void
     configure (void) {
-      ::OneShot.enableAuto();
       Kaleidoscope.use (&::OneShot, NULL);
     }
   };

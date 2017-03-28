@@ -68,13 +68,13 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
           ,Key_Q        ,Key_K                                                   ,Key_M        ,Key_V
                  ,Key_J        ,Key_X                                     ,Key_B        ,Key_W
 
-                        ,MO(_ETY)                                   ,Key_Tab
+                        ,OSL(_ETY)                                  ,Key_Tab
            ,Key_NoKey                ,Key_NoKey            ,Key_Tab          ,Key_Tab
                         ,TG(_GAM)                                   ,Key_Tab
 
-                 ,Key_LCtrl                                               ,Key_RAlt
-     ,Key_LShift               ,Key_LAlt                       ,Key_Enter           ,Key_Backspace
-                 ,MO(_SYM)                                                ,Key_Space
+                 ,OSM(LCtrl)                                              ,OSM(RAlt)
+    ,OSM(LShift)             ,OSM(LAlt)                        ,Key_Enter            ,Key_Backspace
+                 ,OSL(_SYM)                                               ,Key_Space
   ),
 
   /* Numbers, navigation & symbol layer
@@ -107,9 +107,9 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
            ,___                      ,___                     ,Key_mouseL        ,Key_mouseR
                         ,___                                           ,Key_mouseDn
 
-                 ,Key_LCtrl                                                  ,Key_RAlt
-     ,Key_LShift               ,Key_LAlt                          ,Key_RShift          ,Key_Delete
-                 ,___                                                        ,Key_RCtrl
+                 ,___                                                        ,OSM(RAlt)
+     ,OSM(LShift)             ,OSM(LAlt)                         ,Key_RShift          ,Key_Delete
+                 ,___                                                        ,OSM(RCtrl)
   ),
 
   /* Gaming layer
@@ -136,7 +136,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
           ,Key_A        ,Key_D                                                            ,Key_LArrow   ,Key_RArrow
    ,Key_1        ,Key_S        ,Key_Enter ,XXX                         ,Key_LCtrl  ,Key_MBtnL    ,Key_DnArrow    ,XXX
           ,Key_2        ,Key_4                                                            ,Key_Home     ,Key_End
-                 ,Key_3        ,Key_LShift                                         ,XXX          ,XXX
+                 ,Key_3        ,OSM(LShift)                                        ,XXX          ,XXX
 
                         ,___                                           ,Key_Space
            ,___                      ,___                     ,Key_Q             ,Key_F
@@ -183,80 +183,6 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   ),
 };
 
-namespace FocusCommands {
-
-  bool led (const char *command) {
-    enum {
-      GET,
-      SET,
-      SETALL,
-      OFF,
-    } subCommand;
-
-    if (strncmp_P (command, PSTR ("led."), 4) != 0)
-      return false;
-    if (strcmp_P (command + 4, PSTR ("get")) == 0)
-      subCommand = GET;
-    else if (strcmp_P (command + 4, PSTR ("set")) == 0)
-      subCommand = SET;
-    else if (strcmp_P (command + 4, PSTR ("setAll")) == 0)
-      subCommand = SETALL;
-    else if (strcmp_P (command + 4, PSTR ("off")) == 0)
-      subCommand = OFF;
-    else
-      return false;
-
-    switch (subCommand) {
-    case GET:
-      {
-        uint8_t idx = Serial.parseInt ();
-        cRGB c = LEDControl.led_get_crgb_at (idx);
-        const __FlashStringHelper *spc = F(" ");
-
-        Serial.print (c.r);
-        Serial.print (spc);
-        Serial.print (c.g);
-        Serial.print (spc);
-        Serial.println (c.b);
-        break;
-      }
-    case SET:
-      {
-        uint8_t idx = Serial.parseInt ();
-        cRGB c;
-
-        c.r = Serial.parseInt ();
-        c.g = Serial.parseInt ();
-        c.b = Serial.parseInt ();
-
-        LEDControl.led_set_crgb_at (idx, c);
-        break;
-      }
-    case SETALL:
-      {
-        cRGB c;
-
-        c.r = Serial.parseInt ();
-        c.g = Serial.parseInt ();
-        c.b = Serial.parseInt ();
-
-        LEDControl.set_all_leds_to (c);
-
-        break;
-      }
-    case OFF:
-      LEDControl.set_all_leds_to (0, 0, 0);
-      break;
-    }
-
-    Serial.read ();
-    return true;
-  }
-
-}
-
-using namespace FocusCommands;
-
 void setup () {
   Serial.begin(9600);
 
@@ -277,19 +203,7 @@ void setup () {
 
   Focus.addHook (FOCUS_HOOK_HELP);
   Focus.addHook (FOCUS_HOOK_KEYMAP);
-  Focus.addHook (FOCUS_HOOK (FocusCommands::led,
-                             "led.set index r g b\n"
-                             "-------------------\n"
-                             " Set the led at `index` to the color described with `r`, `g`, and `b`.\n\n"
-                             "led.setAll r g b\n"
-                             "----------------\n"
-                             " Set all leds to the color described with `r`, `g`, and `b`.\n\n"
-                             "led.get index\n"
-                             "-------------\n"
-                             " Return the color of the LED at the `index` position, in `r g b` format.\n\n"
-                             "led.off\n"
-                             "-------\n"
-                             " Turn all LEDs off."));
+  Focus.addHook (FOCUS_HOOK_LEDCONTROL);
   Focus.addHook (FOCUS_HOOK_VERSION);
 
   USE_PLUGINS (&EEPROMSettings, &EEPROMKeymap);
