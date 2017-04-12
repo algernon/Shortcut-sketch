@@ -146,6 +146,45 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
                  ,M(MSM)                                                     ,Key_mouseDn
   ),
 
+#define Key_SJ LSHIFT(Key_J)
+#define Key_SY LSHIFT(Key_Y)
+
+
+  /* Diablo3 layer
+   *
+   *                   ,-----.                                                   ,-----.
+   *             ,-----+ Tab +-----------.                           ,-----------|     |-----.
+   *       ,-----|  P  |-----|  T  | Esc |                           |     |     |-----|     |-----.
+   * ,-----|  1  |-----|  3  |-----+-----|                           |-----+-----|     |-----|     |-----.
+   * |  I  |-----|  2  |-----|  4  | Spc |                           |     |     |-----|     |-----|     |
+   * `-----|  G  |-----|  `  |-----+-----'                           `-----+-----|     |-----|     |-----'
+   *       `-----|  S  |-----|  '  |       ,-------.       ,-------.       |     |-----|     |-----'
+   *             `-----'     `-----'       |       |       |       |       `-----'     `-----'
+   *                                       | Shift |       |       |
+   *                            ,-------.  |       |       |       |  ,-------.
+   *                            |   Z   |  `-------'       `-------'  |       |
+   *                            |J     Y|                             |       |
+   *                            |  Alt  |                             |       |
+   *                            `-------'                             `-------'
+   */
+  [_DIO] = KEYMAP
+  (
+                         Key_Tab                                                          ,XXX
+                 ,Key_P        ,Key_T     ,Key_Esc                     ,XXX        ,XXX          ,XXX        
+          ,Key_1        ,Key_3                                                            ,XXX          ,XXX       
+   ,Key_I        ,Key_2        ,Key_4     ,Key_Space                   ,XXX        ,XXX          ,XXX            ,XXX
+          ,Key_G        ,Key_Backtick                                                     ,XXX          ,XXX    
+                 ,Key_S        ,Key_Quote                                          ,XXX          ,XXX
+
+                        ,Key_LShift                                    ,XXX      
+           ,Key_LShift               ,Key_LShift              ,XXX               ,XXX   
+                        ,Key_LShift                                    ,XXX  
+
+                 ,Key_Z                                                      ,XXX        
+     ,Key_J                    ,Key_Y                             ,XXX                 ,XXX        
+                 ,Key_LAlt                                                   ,XXX        
+  ),
+
   /* Empty layer
    *
    *                   ,-----.                                                   ,-----.
@@ -197,9 +236,9 @@ void setup () {
   algernon::MagicCombo::configure ();
   algernon::Macros::configure ();
 
-  Layer.on (_DVK);
+  Layer.on (_DIO);
 
-  Layer.getKey = EEPROMKeymap.getKeyOverride;
+  //Layer.getKey = EEPROMKeymap.getKeyOverride;
 
   LEDControl.syncDelay = 64;
 

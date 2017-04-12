@@ -24,6 +24,7 @@ enum {
   _DVK,
   _SYM,
   _GAM,
+  _DIO,
   _ETY,
 
   LAYER_MAX
