@@ -1,7 +1,7 @@
-build:
+build-all:
 
-setup:
-	@sh -c '. ./.kaleidoscope-builder.conf && setup'
+MAKEFILE_PREFIX=keyboardio/avr/libraries/Kaleidoscope-Plugin/build
+UNAME_S := $(shell uname -s)
 
-%:
-	@hardware/keyboardio/avr/libraries/Kaleidoscope/tools/kaleidoscope-builder $@
+BOARD_HARDWARE_PATH ?= $(shell pwd)/hardware
+include $(BOARD_HARDWARE_PATH)/$(MAKEFILE_PREFIX)/*.mk

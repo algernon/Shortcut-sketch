@@ -25,7 +25,7 @@ namespace algernon {
   namespace OneShot {
     void
     configure (void) {
-      Kaleidoscope.use (&::OneShot, NULL);
+      Kaleidoscope.use (&::OneShot);
     }
   };
 };

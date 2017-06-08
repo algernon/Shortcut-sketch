@@ -29,7 +29,7 @@ namespace algernon {
       CsillaDvorak,
     };
 
-    static const KaleidoscopePlugins::MagicCombo::dictionary_t dictionary[] PROGMEM = {
+    static const kaleidoscope::MagicCombo::combo_t magic_combos[] PROGMEM = {
       // _ETY + CS (Dvorak)
       [CsillaDvorak] = {R0C6,
                         R0C11 | R2C13},
@@ -40,7 +40,7 @@ namespace algernon {
     configure (void) {
       Kaleidoscope.use (&::MagicCombo, NULL);
 
-      ::MagicCombo.configure (dictionary);
+      ::MagicCombo.magic_combos = magic_combos;
     }
   };
 };

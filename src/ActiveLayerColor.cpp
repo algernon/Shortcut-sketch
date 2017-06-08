@@ -31,7 +31,7 @@ namespace algernon {
 
     void
     configure (void) {
-      Kaleidoscope.use (&ActiveLayerColorEffect, NULL);
+      Kaleidoscope.use (&ActiveLayerColorEffect);
       ActiveLayerColorEffect.configure (layerColorMap);
     }
   };

@@ -22,7 +22,7 @@
 #include <Kaleidoscope-LangPack-Hungarian.h>
 #include <Kaleidoscope-MouseKeys.h>
 
-using namespace KaleidoscopePlugins::LangPack;
+using namespace kaleidoscope::language;
 using namespace algernon::MouseKeys;
 
 namespace algernon {

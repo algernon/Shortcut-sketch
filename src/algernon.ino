@@ -31,10 +31,22 @@
 #include "MagicCombo.h"
 #include "MouseKeys.h"
 
-#define Key_LSBrck Key_LSquareBracket
-#define Key_RSBrck Key_RSquareBracket
+#define Key_LSBrck Key_LeftBracket
+#define Key_RSBrck Key_RightBracket
 #define Key_MBtnL  Key_mouseBtnL
 #define Key_MBtnR  Key_mouseBtnR
+
+#define Key_LShift Key_LeftShift
+#define Key_LArrow Key_LeftArrow
+#define Key_RArrow Key_RightArrow
+#define Key_DnArrow Key_DownArrow
+#define Key_LCtrl Key_LeftControl
+#define Key_LAlt Key_LeftAlt
+#define Key_Space Key_Spacebar
+#define Key_RShift Key_RightShift
+#define Key_RAlt Key_RightAlt
+#define Key_Esc Key_Escape
+#define Key_RCtrl Key_RightControl
 
 #define TG(layer) (Key){ layer, KEY_FLAGS | SYNTHETIC | SWITCH_TO_KEYMAP }
 
@@ -189,7 +201,7 @@ void setup () {
   Kaleidoscope.use (&EEPROMSettings, &EEPROMKeymap,
                     &Hungarian, &LEDControl, NULL);
 
-  EEPROMKeymap.reserveSpace (LAYER_MAX);
+  EEPROMKeymap.max_layers (LAYER_MAX);
 
   //algernon::ActiveLayerColor::configure ();
   algernon::MouseKeys::configure ();

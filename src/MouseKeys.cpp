@@ -26,7 +26,7 @@ namespace algernon {
       Mouse.begin ();
       AbsoluteMouse.begin ();
 
-      Kaleidoscope.use (&::MouseGears, NULL);
+      Kaleidoscope.use (&::MouseGears);
     }
   };
 };
