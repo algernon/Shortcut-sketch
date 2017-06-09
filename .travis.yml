@@ -9,7 +9,6 @@ before_install:
   - tar xf arduino-1.6.11-linux64.tar.xz
   - popd
 install:
-  - make setup
-  - make update
+  - sh -c '. ./.kaleidoscope-builder.conf && setup'
 script:
   - make build ARDUINO_PATH=$(pwd)/../arduino-1.6.11
