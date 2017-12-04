@@ -20,15 +20,13 @@
 
 #include "Kaleidoscope.h"
 #include "Kaleidoscope-Focus.h"
+#include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-EEPROM-Settings.h"
 #include "Kaleidoscope-EEPROM-Keymap.h"
 
 #include "ActiveLayerColor.h"
 #include "Layers.h"
 #include "OneShot.h"
-#include "Macros.h"
-#include "MagicCombo.h"
-#include "MouseKeys.h"
 
 #define Key_LSBrck Key_LeftBracket
 #define Key_RSBrck Key_RightBracket
@@ -48,8 +46,6 @@
 #define Key_RCtrl Key_RightControl
 
 #define TG(layer) (Key){ layer, KEY_FLAGS | SYNTHETIC | SWITCH_TO_KEYMAP }
-
-using namespace algernon::MouseKeys;
 
 const Key keymaps[][ROWS][COLS] PROGMEM = {
   /* Dvorak layer
@@ -128,15 +124,12 @@ void setup () {
 
   Kaleidoscope.setup ();
   Kaleidoscope.use (&EEPROMSettings, &EEPROMKeymap,
-                    &LEDControl);
+                    &LEDControl, &MouseKeys);
 
   EEPROMKeymap.max_layers (LAYER_MAX);
 
   algernon::ActiveLayerColor::configure ();
-  algernon::MouseKeys::configure ();
   algernon::OneShot::configure ();
-  algernon::MagicCombo::configure ();
-  algernon::Macros::configure ();
 
   Layer.on (_DVK);
 
