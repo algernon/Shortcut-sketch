@@ -197,9 +197,9 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
 void setup () {
   Serial.begin(9600);
 
-  Kaleidoscope.setup (KEYMAP_SIZE);
+  Kaleidoscope.setup ();
   Kaleidoscope.use (&EEPROMSettings, &EEPROMKeymap,
-                    &Hungarian, &LEDControl, NULL);
+                    &LEDControl);
 
   EEPROMKeymap.max_layers (LAYER_MAX);
 
@@ -215,7 +215,7 @@ void setup () {
 
   LEDControl.syncDelay = 64;
 
-  USE_PLUGINS (&Focus);
+  Kaleidoscope.use (&Focus);
 
   Focus.addHook (FOCUS_HOOK_HELP);
   Focus.addHook (FOCUS_HOOK_VERSION);

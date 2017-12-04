@@ -33,10 +33,9 @@ namespace algernon {
                             T(S),
                             T(I),
                             T(L),
-                            T(L),
-                            END));
+                            T(L)));
 
-      handle_keyswitch_event ((Key){.raw = HUN_AA}, 255, 255, IS_PRESSED | INJECTED);
+      handleKeyswitchEvent ((Key){.raw = HUN_AA}, 255, 255, IS_PRESSED | INJECTED);
 
       ::Macros.play (MACRO (T(M),
                             T(A),
@@ -46,13 +45,11 @@ namespace algernon {
                             T(O),
                             T(N),
                             T(Y),
-                            T(K),
-                            END));
+                            T(K)));
 
-      handle_keyswitch_event ((Key){.raw = HUN_AA}, 255, 255, IS_PRESSED | INJECTED);
+      handleKeyswitchEvent ((Key){.raw = HUN_AA}, 255, 255, IS_PRESSED | INJECTED);
 
-      ::Macros.play (MACRO (T(M),
-                            END));
+      ::Macros.play (MACRO (T(M)));
     }
 
     void
@@ -60,14 +57,13 @@ namespace algernon {
       ::Macros.play (MACRO (Tr(LSHIFT(Key_G)),
                             T(E),
                             T(J),
-                            T(G),
-                            END));
+                            T(G)));
 
-      handle_keyswitch_event ((Key){.raw = HUN_ODA}, 255, 255, IS_PRESSED | INJECTED);
+      handleKeyswitchEvent ((Key){.raw = HUN_ODA}, 255, 255, IS_PRESSED | INJECTED);
       Keyboard.sendReport ();
-      handle_keyswitch_event ((Key){.raw = HUN_ODA}, 255, 255, IS_PRESSED | INJECTED);
+      handleKeyswitchEvent ((Key){.raw = HUN_ODA}, 255, 255, IS_PRESSED | INJECTED);
       Keyboard.sendReport ();
-      handle_keyswitch_event ((Key){.raw = HUN_ODA}, 255, 255, IS_PRESSED | INJECTED);
+      handleKeyswitchEvent ((Key){.raw = HUN_ODA}, 255, 255, IS_PRESSED | INJECTED);
     }
 
     void
@@ -78,7 +74,7 @@ namespace algernon {
 }
 
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
-  if (!key_is_pressed (keyState))
+  if (!keyIsPressed (keyState))
     return MACRO_NONE;
 
   switch (macroIndex) {
