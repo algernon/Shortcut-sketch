@@ -18,6 +18,4 @@
 
 #pragma once
 
-#define FOCUS_WITHOUT_DOCS 0
-
 #define WITH_CYCLE_REPORT 0
