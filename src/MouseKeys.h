@@ -21,6 +21,7 @@
 #include <Kaleidoscope-MouseKeys.h>
 
 namespace algernon {
+namespace MouseKeys {
     void configure (void);
   };
 };
