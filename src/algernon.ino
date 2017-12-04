@@ -132,7 +132,7 @@ void setup () {
 
   EEPROMKeymap.max_layers (LAYER_MAX);
 
-  //algernon::ActiveLayerColor::configure ();
+  algernon::ActiveLayerColor::configure ();
   algernon::MouseKeys::configure ();
   algernon::OneShot::configure ();
   algernon::MagicCombo::configure ();
