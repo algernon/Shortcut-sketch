@@ -25,8 +25,6 @@ namespace algernon {
     static const cRGB layerColorMap[LAYER_MAX] PROGMEM = {
       [_DVK] = CRGB(0, 0, 0),
       [_SYM] = CRGB(0xff, 0xff, 0x00),
-      [_GAM] = CRGB(0xff, 0x00, 0x00),
-      [_ETY] = CRGB(0x20, 0x20, 0x20),
     };
 
     void

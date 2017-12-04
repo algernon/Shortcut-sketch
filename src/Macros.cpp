@@ -77,33 +77,5 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   if (!keyIsPressed (keyState))
     return MACRO_NONE;
 
-  switch (macroIndex) {
-  case MAP:
-    MouseGears.accelUp ();
-    break;
-  case MAM:
-    MouseGears.accelDown ();
-    break;
-  case MSP:
-    MouseGears.speedUp ();
-    break;
-  case MSM:
-    MouseGears.speedDown ();
-    break;
-  }
-
-  switch (macroIndex) {
-  case MAP ... MSM:
-    Serial.print (F("# mouse: speed="));
-    Serial.print (::MouseKeys.speed);
-    Serial.print (F("; speedDelay="));
-    Serial.print (::MouseKeys.speedDelay);
-    Serial.print (F("; accelSpeed="));
-    Serial.print (::MouseKeys.accelSpeed);
-    Serial.print (F("; accelDelay="));
-    Serial.println (::MouseKeys.accelDelay);
-    break;
-  }
-
   return MACRO_NONE;
 }

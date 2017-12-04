@@ -62,9 +62,9 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    * |  Z  |-----|  O  |-----|  U  |  I  |                           |  D  |  H  |-----|  N  |-----| S   |
    * `-----|  Q  |-----|  K  |-----+-----'                           `-----+-----|  M  |-----|  V  |-----'
    *       `-----|  J  |-----|  X  |       ,-------.       ,-------.       |  B  |-----|  W  |-----'
-   *             `-----'     `-----'       |  ETY  |       |       |       `-----'     `-----'
-   *                                       |       |       |  Tab  |
-   *                            ,-------.  |  GAM  |       |       |  ,-------.
+   *             `-----'     `-----'       |M MUp M|       |L     R|       `-----'     `-----'
+   *                                       |L     R|       |C Tab C|
+   *                            ,-------.  |t Mdn t|       |k     k|  ,-------.
    *                            |S Ctl A|  `-------'       `-------'  |E AGr B|
    *                            |f     l|                             |n     s|
    *                            |t SYM t|                             |t SPC p|
@@ -79,9 +79,9 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
           ,Key_Q        ,Key_K                                                   ,Key_M        ,Key_V
                  ,Key_J        ,Key_X                                     ,Key_B        ,Key_W
 
-                        ,OSL(_ETY)                                  ,Key_Tab
-           ,Key_NoKey                ,Key_NoKey            ,Key_Tab          ,Key_Tab
-                        ,TG(_GAM)                                   ,Key_Tab
+                        ,Key_mouseUp                                ,Key_Tab
+           ,Key_mouseL               ,Key_mouseR           ,Key_mouseBtnL    ,Key_mouseBtnR
+                        ,Key_mouseDn                                ,Key_Tab
 
                  ,OSM(LCtrl)                                              ,OSM(RAlt)
     ,OSM(LShift)             ,OSM(LAlt)                        ,Key_Enter            ,Key_Backspace
@@ -97,12 +97,12 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    * | Esc |-----|  `  |-----|  /  |  \  |                           |  =  |  -  |-----|  ]  |-----|     |
    * `-----| Lft |-----| Up  |-----+-----'                           `-----+-----|RClk |-----| End |-----'
    *       `-----| Dn  |-----| Rgt |       ,-------.       ,-------.       |LClk |-----| Home|-----'
-   *             `-----'     `-----'       |  ETY  |       |M MUp M|       `-----'     `-----'
-   *                                       |       |       |L     R|
-   *                            ,-------.  |  GAM  |       |t MDn g|  ,-------.
+   *             `-----'     `-----'       |L MUp R|       |M MUp M|       `-----'     `-----'
+   *                                       |C     C|       |L     R|
+   *                            ,-------.  |k Mdn k|       |t MDn g|  ,-------.
    *                            |S Ctl A|  `-------'       `-------'  |S AGr D|
    *                            |f     l|                             |f     e|
-   *                            |t QTY t|                             |t Cnt l|
+   *                            |t DVK t|                             |t Cnt l|
    *                            `-------'                             `-------'
    */
   [_SYM] = KEYMAP
@@ -119,79 +119,9 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
                         ,___                                           ,Key_mouseDn
 
                  ,___                                                        ,OSM(RAlt)
-     ,OSM(LShift)             ,OSM(LAlt)                         ,Key_RShift          ,Key_Delete
+     ,___                     ,___                               ,Key_RShift          ,Key_Delete
                  ,___                                                        ,OSM(RCtrl)
-  ),
-
-  /* Gaming layer
-   *
-   *                   ,-----.                                                   ,-----.
-   *             ,-----+     +-----------.                           ,-----------|     |-----.
-   *       ,-----|  W  |-----| Esc |     |                           | Alt | RCk |-----|  U  |-----.
-   * ,-----|  A  |-----|  D  |-----+-----|                           |-----+-----| Lft |-----| Rgt |-----.
-   * |  1  |-----|  S  |-----| Ent |     |                           | Ctl | LCk |-----| Dwn |-----|     |
-   * `-----|  2  |-----|  4  |-----+-----'                           `-----+-----| Hme |-----| End |-----'
-   *       `-----|  3  |-----| Sft |       ,-------.       ,-------.       |     |-----|     |-----'
-   *             `-----'     `-----'       |  ETY  |       |  Spc  |       `-----'     `-----'
-   *                                       |       |       |Q     F|
-   *                            ,-------.  |  QTY  |       |   E   |  ,-------.
-   *                            |M MS+ M|  `-------'       `-------'  |M MUp M|
-   *                            |A     A|                             |L     R|
-   *                            |- MS- +|                             |t MDn g|
-   *                            `-------'                             `-------'
-   */
-  [_GAM] = KEYMAP
-  (
-                         XXX                                                              ,XXX
-                 ,Key_W        ,Key_Esc   ,XXX                         ,Key_LAlt   ,Key_MBtnR    ,Key_UpArrow
-          ,Key_A        ,Key_D                                                            ,Key_LArrow   ,Key_RArrow
-   ,Key_1        ,Key_S        ,Key_Enter ,XXX                         ,Key_LCtrl  ,Key_MBtnL    ,Key_DnArrow    ,XXX
-          ,Key_2        ,Key_4                                                            ,Key_Home     ,Key_End
-                 ,Key_3        ,OSM(LShift)                                        ,XXX          ,XXX
-
-                        ,___                                           ,Key_Space
-           ,___                      ,___                     ,Key_Q             ,Key_F
-                        ,___                                           ,Key_E
-
-                 ,M(MSP)                                                     ,Key_mouseUp
-     ,M(MAM)                   ,M(MAP)                            ,Key_mouseL          ,Key_mouseR
-                 ,M(MSM)                                                     ,Key_mouseDn
-  ),
-
-  /* Empty layer
-   *
-   *                   ,-----.                                                   ,-----.
-   *             ,-----+     +-----------.                           ,-----------|     |-----.
-   *       ,-----|     |-----|     |     |                           |     |     |-----|     |-----.
-   * ,-----|     |-----|     |-----+-----|                           |-----+-----|     |-----|     |-----.
-   * |     |-----|     |-----|     |     |                           |     |     |-----|     |-----|     |
-   * `-----|     |-----|     |-----+-----'                           `-----+-----|     |-----|     |-----'
-   *       `-----|     |-----|     |       ,-------.       ,-------.       |     |-----|     |-----'
-   *             `-----'     `-----'       |       |       |       |       `-----'     `-----'
-   *                                       |       |       |       |
-   *                            ,-------.  |       |       |       |  ,-------.
-   *                            |       |  `-------'       `-------'  |       |
-   *                            |       |                             |       |
-   *                            |       |                             |       |
-   *                            `-------'                             `-------'
-   */
-  [_ETY] = KEYMAP
-  (
-                         XXX                                                     ,XXX
-                 ,XXX          ,XXX   ,XXX                         ,XXX   ,XXX          ,XXX
-          ,XXX          ,XXX                                                     ,XXX          ,XXX
-   ,XXX          ,XXX          ,XXX   ,XXX                         ,XXX   ,XXX          ,XXX          ,XXX
-          ,XXX          ,XXX                                                     ,XXX          ,XXX
-                 ,XXX          ,XXX                                       ,XXX          ,XXX
-
-                        ,___                                        ,XXX
-           ,XXX                      ,XXX                  ,XXX            ,XXX
-                        ,XXX                                        ,XXX
-
-                 ,XXX                                                     ,XXX
-     ,XXX                      ,XXX                            ,XXX                 ,XXX
-                 ,XXX                                                     ,XXX
-  ),
+   ),
 };
 
 void setup () {

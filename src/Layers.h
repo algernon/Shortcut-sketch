@@ -23,8 +23,6 @@
 enum {
   _DVK,
   _SYM,
-  _GAM,
-  _ETY,
 
   LAYER_MAX
 };

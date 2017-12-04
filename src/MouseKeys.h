@@ -19,17 +19,8 @@
 #pragma once
 
 #include <Kaleidoscope-MouseKeys.h>
-#include <Kaleidoscope-MouseGears.h>
 
 namespace algernon {
-  namespace MouseKeys {
-    enum {
-      MAP,
-      MAM,
-      MSP,
-      MSM,
-    };
-
     void configure (void);
   };
 };

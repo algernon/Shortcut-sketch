@@ -23,10 +23,7 @@ namespace algernon {
 
     void
     configure (void) {
-      Mouse.begin ();
-      AbsoluteMouse.begin ();
-
-      Kaleidoscope.use (&::MouseGears);
+      Kaleidoscope.use (&::MouseKeys);
     }
   };
 };
