@@ -19,7 +19,6 @@
 #include "00-config.h"
 
 #include "Kaleidoscope.h"
-#include "Kaleidoscope-LangPack-Hungarian.h"
 #include "Kaleidoscope-Focus.h"
 #include "Kaleidoscope-EEPROM-Settings.h"
 #include "Kaleidoscope-EEPROM-Keymap.h"
